@@ -25,7 +25,7 @@ const Item = () => {
             navi('/login')
         }
 
-        await fetch('http://localhost:8000/user/getItems')
+        await fetch('https://srinivasa-suppliers.herokuapp.com/user/getItems')
         .then(response => response.json())
         .then(json => setData(json));
     }, [])
