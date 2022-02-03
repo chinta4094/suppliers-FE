@@ -24,7 +24,7 @@ const Home = () => {
     const submitHandler = async e =>{
         e.preventDefault()
         console.log(localStorage.getItem('form'))
-        const record = await fetch('http://localhost:8000/user/signup',{
+        const record = await fetch('https://srinivasa-suppliers.herokuapp.com/user/signup',{
             method : "POST",
             headers : {
                 "Content-Type" : "application/json"

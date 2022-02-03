@@ -20,7 +20,7 @@ const AddItem = () => {
     const submitHandler = async e =>{
         e.preventDefault()
         console.log(localStorage.getItem('form'))
-        const record = await fetch('http://localhost:8000/admin/addItem',{
+        const record = await fetch('https://srinivasa-suppliers.herokuapp.com/admin/addItem',{
             method : "POST",
             headers : {
                 "Content-Type" : "application/json"

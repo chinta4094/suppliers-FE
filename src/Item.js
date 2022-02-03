@@ -15,7 +15,7 @@ const Item = () => {
     const navi = useNavigate()
     React.useEffect( async() => {
         localStorage.setItem('form',JSON.stringify(data))
-        const name = await fetch('http://localhost:8000/user/userDetails')
+        const name = await fetch('https://srinivasa-suppliers.herokuapp.com/user/userDetails')
         
         const findName = await name.json()
         if(findName.message == "success"){
@@ -31,7 +31,7 @@ const Item = () => {
     }, [])
 
     const addItems = async (itemId,value) => {
-        const record = await fetch(`http://localhost:8000/user/addToCart/${itemId}/${value}`,{
+        const record = await fetch(`https://srinivasa-suppliers.herokuapp.com/user/addToCart/${itemId}/${value}`,{
             method : "POST",
             headers : {
                 "Content-Type" : "application/json"
@@ -52,7 +52,7 @@ const Item = () => {
     }
 
     const submitHere = async () => {
-        const record = await fetch(`http://localhost:8000/user/totalAmount`,{
+        const record = await fetch(`https://srinivasa-suppliers.herokuapp.com/user/totalAmount`,{
             method : "POST",
         })
 

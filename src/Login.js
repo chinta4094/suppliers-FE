@@ -19,7 +19,7 @@ const Login = () => {
 
     React.useEffect( async() => {
         localStorage.setItem('form',JSON.stringify(data))
-        const name = await fetch('http://localhost:8000/user/userDetails')
+        const name = await fetch('https://srinivasa-suppliers.herokuapp.com/user/userDetails')
         
         const findName = await name.json()
         if(findName.message == "success"){
@@ -34,7 +34,7 @@ const Login = () => {
 
     const submitHandler = async e =>{
         e.preventDefault()
-        const record = await fetch(`http://localhost:8000/user/login/${email}`,{
+        const record = await fetch(`https://srinivasa-suppliers.herokuapp.com/user/login/${email}`,{
             method : "POST",
             headers : {
                 "Content-Type" : "application/json"
@@ -63,7 +63,7 @@ const Login = () => {
     }
 
     const logoutUser = async () => {
-        const dele = await fetch('http://localhost:8000/user/logout', { method: 'DELETE' })
+        const dele = await fetch('https://srinivasa-suppliers.herokuapp.com/user/logout', { method: 'DELETE' })
         console.log("LOGOUT")
         const del = await dele.json()
         if(del.details == "success"){

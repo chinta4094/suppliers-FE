@@ -6,7 +6,7 @@ const Cart = () => {
     const [item,setItem] = useState([])
     React.useEffect( async() => {
         
-        const record = await fetch('http://localhost:8000/user/totalBill')
+        const record = await fetch('https://srinivasa-suppliers.herokuapp.com/user/totalBill')
         
         const rec = await record.json()
         if(rec.details === "success"){
@@ -15,7 +15,7 @@ const Cart = () => {
             console.log("Failed")
         }
 
-        const itemRecord = await fetch('http://localhost:8000/user/cartDetails')
+        const itemRecord = await fetch('https://srinivasa-suppliers.herokuapp.com/user/cartDetails')
 
         const rec1 = await itemRecord.json()
         setItem(rec1)
