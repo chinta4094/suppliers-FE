@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Item = () => {
     const [data,setData] = useState([])
@@ -47,7 +49,9 @@ const Item = () => {
 
         const rec = await record.json()
         if(rec.details === 'success'){
-            // console.log(rec)
+            toast.success("Item Add To Cart Successful",{
+                autoClose: 1000
+            });
         }
     }
 
@@ -94,7 +98,6 @@ const Item = () => {
                     </div>
                     <div style={{maxWidth : '100px',
                         fontFamily : 'cursive', marginLeft : '25px' ,textAlign : 'center'}}>{item.itemName}</div>
-                    <div>
                     <input style={{maxWidth : '50px',borderBottom : '2px solid black'}} name='quantity' onChange={changeHandler} ></input>
                     <button type='submit' style={{
                         backgroundColor : 'green',
@@ -104,7 +107,7 @@ const Item = () => {
                         margin : '10px 0px 0px 50px'
                     }} className='control-label col-sm-4' value='submit' onClick={() => addItems(item.id,quantity)}>ADD</button>
                     
-                    </div>
+                    <ToastContainer />
                 </div>)
             }
             <div>
