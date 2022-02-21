@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Loading from './Loading'
 
 const Item = () => {
     const [data,setData] = useState([])
     const [user,setUser] = useState([])
+    const [loading,setLoading] = useState(false)
     const [val,setVal] = useState({
         quantity : ''
     })
@@ -30,6 +32,7 @@ const Item = () => {
         await fetch('https://srinivasa-suppliers.herokuapp.com/user/getItems')
         .then(response => response.json())
         .then(json => setData(json));
+        setLoading(true)
     }, [])
 
     const addItems = async (itemId,value) => {
@@ -91,7 +94,8 @@ const Item = () => {
                 fontFamily : 'cursive',textAlign : 'center',
                 fontWeight : 'bold'}}>{user.map(item => <p key={item}>Hi {item.firstName}{item.lastName}</p>)}</h3>
             </div>
-            { data.map(item => 
+                <div>
+                { data.map(item => 
                 <div key={item.id} style={{overflow : 'hidden', float : 'left', borderRadius : '10px', margin : '15px 0px 0px 15px',border : '2px solid black',padding : '10px'}}>
                     <div style={{ overflow: 'hidden'}}>
                         <img src={require(`./images/${item.image}`)} height={150} width={150}></img>
@@ -108,8 +112,8 @@ const Item = () => {
                     }} className='control-label col-sm-4' value='submit' onClick={() => addItems(item.id,quantity)}>ADD</button>
                     
                     <ToastContainer />
-                </div>)
-            }
+                </div>)}
+                </div>
             <div>
             <button type='submit' style={{
                         float : 'right',
